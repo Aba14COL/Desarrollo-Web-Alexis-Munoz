@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FITPLAN - Ponte en contacto con nuestro equipo.">
+    <title>FITPLAN - Contacto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>FITPLAN</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="rutinas.html">Rutinas</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <p>
+                ¿Tienes alguna pregunta sobre nuestras rutinas? Escríbenos y nuestro equipo
+                te responderá lo antes posible.
+            </p>
+
+            <form action="#" method="post">
+                <label for="nombre-contacto">Nombre completo</label>
+                <input type="text" id="nombre-contacto" name="nombre" placeholder="Tu nombre" required>
+
+                <label for="correo-contacto">Correo electrónico</label>
+                <input type="email" id="correo-contacto" name="correo" placeholder="tu@correo.com" required>
+
+                <label for="asunto">Asunto</label>
+                <input type="text" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?" required>
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="6" placeholder="Escribe tu mensaje aquí" required></textarea>
+
+                <button type="submit">Enviar mensaje</button>
+            </form>
+        </section>
+
+        <section id="informacion-contacto">
+            <h2>También puedes encontrarnos</h2>
+            <article>
+                <h3>Correo electrónico</h3>
+                <p><a href="mailto:contacto@fitplan.com">contacto@fitplan.com</a></p>
+            </article>
+            <article>
+                <h3>Horario de atención</h3>
+                <p>De lunes a viernes, de 9:00 a 18:00 horas.</p>
+            </article>
+            <aside>
+                <h3>Respuesta del equipo</h3>
+                <p>
+                    Revisamos cada mensaje con atención y normalmente respondemos en un plazo
+                    máximo de 48 horas hábiles.
+                </p>
+            </aside>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 FITPLAN. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

@@ -103,11 +103,13 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 input[type="date"],
-select {
+select,
+textarea {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    font-family: inherit;
 }
 
 button {
