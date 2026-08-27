@@ -24,9 +24,9 @@
         <section id="intro-rutinas">
             <h2>Nuestras Rutinas</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio
-                vitae vestibulum vestibulum. Cras vehicula, mi sed tincidunt interdum, nisi
-                erat laoreet nisl, id vehicula velit ante sit amet justo.
+                Tenemos rutinas diseñadas para cada nivel de condición física. Elige la que
+                mejor se ajuste a ti y empieza a entrenar hoy mismo. Todas incluyen
+                calentamiento, ejercicios principales y enfriamiento.
             </p>
         </section>
         <section id="rutina-principiante">
@@ -34,24 +34,22 @@
             <article>
                 <h3>Calentamiento</h3>
                 <p>
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-                    tempor sit amet, ante.
+                    5 minutos de trote suave en el mismo lugar, seguidos de movilidad
+                    articular en hombros, cadera y rodillas.
                 </p>
             </article>
             <article>
                 <h3>Ejercicios principales</h3>
                 <p>
-                    Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
-                    Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
-                    pharetra.
+                    3 series de 12 sentadillas, 3 series de 10 flexiones de rodillas y
+                    3 series de 20 segundos de plancha abdominal.
                 </p>
             </article>
             <article>
                 <h3>Enfriamiento</h3>
                 <p>
-                    Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.
-                    Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci.
+                    5 minutos de estiramientos suaves enfocados en piernas y espalda baja
+                    para relajar los músculos trabajados.
                 </p>
             </article>
         </section>
@@ -60,22 +58,22 @@
             <article>
                 <h3>Circuito de fuerza</h3>
                 <p>
-                    Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec,
-                    imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu.
+                    4 series de 15 zancadas por pierna, 4 series de 12 flexiones completas y
+                    4 series de 15 remo con banda elástica.
                 </p>
             </article>
             <article>
                 <h3>Cardio intensivo</h3>
                 <p>
-                    Praesent blandit laoreet nibh. Fusce convallis metus id felis luctus
-                    adipiscing. Pellentesque egestas, neque sit amet convallis pulvinar.
+                    4 rondas de 1 minuto de burpees seguidos de 1 minuto de descanso activo
+                    caminando en el lugar.
                 </p>
             </article>
             <aside>
                 <h3>Consejo del entrenador</h3>
                 <p>
-                    Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet,
-                    leo. Maecenas malesuada. Praesent congue erat at massa.
+                    Cuida siempre la técnica antes que la velocidad. Es mejor hacer menos
+                    repeticiones bien hechas que muchas con mala postura.
                 </p>
             </aside>
         </section>
@@ -84,17 +82,48 @@
             <article>
                 <h3>Entrenamiento de alta intensidad</h3>
                 <p>
-                    Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui.
-                    Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc.
+                    5 rondas de HIIT: 40 segundos de esfuerzo máximo en sentadilla salto,
+                    escaladores y burpees, con 20 segundos de descanso entre ejercicio.
                 </p>
             </article>
             <article>
                 <h3>Resistencia y potencia</h3>
                 <p>
-                    Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
-                    nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.
+                    5 series de 20 saltos al cajón, 5 series de 15 dominadas asistidas y
+                    5 series de sprints de 30 segundos.
                 </p>
             </article>
+        </section>
+
+        <section id="inscripcion">
+            <h2>Inscríbete a una Rutina</h2>
+            <p>
+                Completa tus datos y elige la rutina que se ajuste a tu nivel.
+                Nuestro equipo te contactará para confirmar tu inicio.
+            </p>
+
+            <form action="#" method="post">
+                <label for="nombre-inscripcion">Nombre completo</label>
+                <input type="text" id="nombre-inscripcion" name="nombre" required>
+
+                <label for="correo-inscripcion">Correo electrónico</label>
+                <input type="email" id="correo-inscripcion" name="correo" required>
+
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" name="edad" min="12" max="99">
+
+                <label for="rutina">Rutina de interés</label>
+                <select id="rutina" name="rutina">
+                    <option value="principiante">Principiante</option>
+                    <option value="intermedio">Intermedio</option>
+                    <option value="avanzado">Avanzado</option>
+                </select>
+
+                <label for="fecha-inicio">Fecha de inicio deseada</label>
+                <input type="date" id="fecha-inicio" name="fecha-inicio" required>
+
+                <button type="submit">Confirmar inscripción</button>
+            </form>
         </section>
     </main>
     <footer>

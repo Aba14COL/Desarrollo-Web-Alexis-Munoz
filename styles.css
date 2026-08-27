@@ -100,7 +100,10 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
