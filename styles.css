@@ -70,14 +70,50 @@ main {
     padding: 0 1rem;
 }
 
+main form {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 section {
     background-color: var(--color-tarjetas);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 6px;
-    border: 1px solid #282828;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid color-mix(in srgb, var(--color-principal) 50%, white 50%);
+
 }
+
+.registro {
+    background-color: var(--color-tarjetas);
+    max-width: 650px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 3rem;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-principal) 50%, white 50%);
+    font-size: 1.05rem;
+}
+
+.login {
+    background-color: var(--color-tarjetas);
+    max-width: 650px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 3rem;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-principal) 50%, white 50%);
+    font-size: 1.05rem;
+}
+
+
+
+.contacto {}
 
 section h2 {
     margin-bottom: 1rem;
@@ -224,6 +260,25 @@ button {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+
+.btn-log {
+    border: #000000;
+    flex: 1;
+    display: flex;
+    justify-content: right;
+}
+
+.btn-log p {
+    color: var(--color-principal);
+    text-decoration: none;
+    font-weight: 3px;
+    transition: color 0.3s ease;
+}
+
+.btn-regis a:hover {
+    background-color: #000000;
+    color: var(--color-terciario);
 }
 
 button:hover {
