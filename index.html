@@ -71,59 +71,60 @@
                 </p>
             </article>
         </section>
+        <section class="calculadora-imc" id="about">
+            <h2>Calculadora de IMC</h2>
+            <p>Descubre tu Índice de Masa Corporal (IMC) ingresando tus datos a continuación.</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 450px; margin-top: 1rem;">
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" placeholder="Ej. 70">
+
+                <label for="altura">Altura (m):</label>
+                <input type="number" id="altura" placeholder="Ej. 1.75" step="0.01">
+
+                <button id="btn-calcular" type="button">Calcular</button>
+            </div>
+            <p id="resultado-imc" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
+        </section>
+
+        <footer>
+            <p>2026 FITPLAN. Todos los derechos reservados.</p>
+        </footer>
+
+        <script>
+
+            document.getElementById('btn-calcular').addEventListener('click', function () {
+
+                let peso = parseFloat(document.getElementById('peso').value);
+                let altura = parseFloat(document.getElementById('altura').value);
+                let elementoResultado = document.getElementById('resultado-imc');
+
+
+                if (peso > 0 && altura > 0) {
+                    let imc = peso / (altura * altura);
+                    let mensaje = "Tu IMC es " + imc.toFixed(2) + ". ";
+
+                    if (imc < 18.5) {
+                        mensaje += "Estás por debajo de tu peso ideal.";
+                    } else if (imc >= 18.5 && imc < 24.9) {
+                        mensaje += "Tienes un peso saludable.";
+                    } else if (imc >= 25 && imc < 29.9) {
+                        mensaje += "Tienes sobrepeso.";
+                    } else {
+                        mensaje += "Tienes obesidad.";
+                    }
+
+
+                    elementoResultado.textContent = mensaje;
+                    elementoResultado.style.color = "var(--color-principal)";
+                } else {
+                    elementoResultado.textContent = "Por favor ingresa valores válidos para peso y altura.";
+                    elementoResultado.style.color = "var(--color-terciario)";
+                }
+            });
+        </script>
     </main>
 
-    <section id="calculadora-imc" class="about">
-        <h2>Calculadora de IMC</h2>
-        <p>Descubre tu Índice de Masa Corporal (IMC) ingresando tus datos a continuación.</p>
-        <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 450px; margin-top: 1rem;">
-            <label for="peso">Peso (kg):</label>
-            <input type="number" id="peso" placeholder="Ej. 70">
-            
-            <label for="altura">Altura (m):</label>
-            <input type="number" id="altura" placeholder="Ej. 1.75" step="0.01">
-            
-            <button id="btn-calcular" type="button">Calcular</button>
-        </div>
-        <p id="resultado-imc" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
-    </section>
 
-    <footer>
-        <p>2026 FITPLAN. Todos los derechos reservados.</p>
-    </footer>
-
-    <script>
-        // EVENTO: Escuchamos el clic en el botón con id 'btn-calcular'
-        document.getElementById('btn-calcular').addEventListener('click', function() {
-            // DATOS EN VARIABLES
-            let peso = parseFloat(document.getElementById('peso').value);
-            let altura = parseFloat(document.getElementById('altura').value);
-            let elementoResultado = document.getElementById('resultado-imc');
-            
-            // FUNCIÓN: Validamos y realizamos el cálculo
-            if (peso > 0 && altura > 0) {
-                let imc = peso / (altura * altura);
-                let mensaje = "Tu IMC es " + imc.toFixed(2) + ". ";
-                
-                if (imc < 18.5) {
-                    mensaje += "Estás por debajo de tu peso ideal.";
-                } else if (imc >= 18.5 && imc < 24.9) {
-                    mensaje += "Tienes un peso saludable.";
-                } else if (imc >= 25 && imc < 29.9) {
-                    mensaje += "Tienes sobrepeso.";
-                } else {
-                    mensaje += "Tienes obesidad.";
-                }
-                
-                // ACCIÓN CONCRETA: Mostrar la respuesta al usuario con el color principal del tema
-                elementoResultado.textContent = mensaje;
-                elementoResultado.style.color = "var(--color-principal)";
-            } else {
-                elementoResultado.textContent = "Por favor ingresa valores válidos para peso y altura.";
-                elementoResultado.style.color = "var(--color-terciario)"; // Naranja para errores
-            }
-        });
-    </script>
 </body>
 
 </html>
