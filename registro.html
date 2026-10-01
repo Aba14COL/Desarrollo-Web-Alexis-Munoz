@@ -31,7 +31,7 @@
                 para tu nivel.
             </p>
 
-            <form action="#" method="post">
+            <form id="registro-form" action="#" method="post">
                 <label for="nombre">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
 
@@ -41,8 +41,9 @@
                 <label for="reg-password">Contraseña</label>
                 <input type="password" id="reg-password" name="reg-password" placeholder="Crea una contraseña" required>
 
-                <button type="submit">Registrarse</button>
+                <button type="submit" id="btn-registro">Registrarse</button>
             </form>
+            <p id="mensaje-registro" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
         </section>
         <aside>
             <h3>¿Por qué registrarse?</h3>
@@ -51,7 +52,7 @@
                 progreso semanal y recomendaciones según tu nivel.
             </p>
             <div id="btn-log">
-                <button type="submit"><a href="login.html">Iniciar Sesión</a></button>
+                <button type="button"><a href="login.html">Iniciar Sesión</a></button>
             </div>
         </aside>
     </main>
@@ -59,6 +60,28 @@
     <footer>
         <p>&copy; 2026 FITPLAN. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        document.getElementById('registro-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let nombre = document.getElementById('nombre').value.trim();
+            let email = document.getElementById('reg-email').value.trim();
+            let password = document.getElementById('reg-password').value.trim();
+            let elementoResultado = document.getElementById('mensaje-registro');
+
+            if (nombre !== "" && email !== "" && password.length >= 6) {
+                elementoResultado.textContent = "¡Registro exitoso, " + nombre + "! Ya puedes iniciar sesión.";
+                elementoResultado.style.color = "var(--color-principal)";
+            } else if (password.length < 6) {
+                elementoResultado.textContent = "La contraseña debe tener al menos 6 caracteres.";
+                elementoResultado.style.color = "var(--color-terciario)";
+            } else {
+                elementoResultado.textContent = "Por favor completa todos los campos requeridos.";
+                elementoResultado.style.color = "var(--color-terciario)";
+            }
+        });
+    </script>
 </body>
 
 </html>
