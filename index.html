@@ -6,82 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FITPLAN - Tu plataforma de rutinas de ejercicio personalizadas.">
     <title>FITPLAN - Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <h1>FitPlan</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="rutinas.html">Rutinas</a></li>
-                <li><a href="login.html">Iniciar Sesión</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="contenedor header-inner">
+            <a class="logo" href="index.html" aria-label="FitPlan, inicio">Fit<span>Plan</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu"
+                aria-label="Abrir o cerrar el menú"><span></span></button>
+            <nav id="menu" aria-label="Principal">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Inicio</a></li>
+                    <li><a href="rutinas.html">Rutinas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div id="zona-sesion" class="zona-sesion">
+                <a class="btn btn-borde btn-sm" href="login.html">Iniciar sesión</a>
+                <a class="btn btn-primario btn-sm" href="registro.html">Únete</a>
+            </div>
+        </div>
     </header>
+
     <main>
         <section class="hero">
-            <h2>Bienvenido a FITPLAN</h2>
-            <p>
-                FITPLAN es tu plataforma para entrenar en casa o en el gimnasio, sin importar
-                tu nivel. Elige una rutina, síguela paso a paso y lleva el control de tu
-                progreso desde cualquier dispositivo.
-            </p>
+            <div class="contenedor hero-grid">
+                <div>
+                    <h1>Entrena a tu manera. Sin excusas.</h1>
+                    <p class="hero-texto">
+                        FITPLAN es tu plataforma para entrenar en casa o en el gimnasio, sin importar
+                        tu nivel. Elige una rutina, síguela paso a paso y lleva el control de tu
+                        progreso desde cualquier dispositivo.
+                    </p>
+                    <div class="hero-acciones">
+                        <a class="btn btn-primario" href="rutinas.html">Ver rutinas</a>
+                        <a class="btn btn-borde" href="registro.html" data-solo-visitante>Crear cuenta gratis</a>
+                    </div>
+                </div>
+                <aside class="panel-amarillo">
+                    <h2>Empieza por tu punto de partida</h2>
+                    <p>Calcula tu IMC en segundos y elige la rutina que mejor se ajusta a ti.</p>
+                    <a class="btn btn-negro" href="#calculadora">Calcular mi IMC</a>
+                </aside>
+            </div>
         </section>
-        <section class="about" id="about">
-            <h2>¿Qué es FITPLAN?</h2>
-            <p>
-                Somos una plataforma pensada para personas que quieren empezar a ejercitarse
-                de forma segura y organizada. Ofrecemos rutinas clasificadas por nivel,
-                explicadas de manera clara para que cualquier persona pueda seguirlas sin
-                necesidad de un entrenador presencial.
-            </p>
-            <aside>
-                <h3>Dato importante</h3>
-                <p>
-                    Antes de empezar cualquier rutina, recuerda calentar al menos 5 minutos
-                    y mantenerte hidratado durante todo el entrenamiento.
-                </p>
-            </aside>
-        </section>
-        <section class="featured" id="featured">
-            <h2>Artículos Destacados</h2>
-            <article>
-                <h3>Beneficios del ejercicio diario</h3>
-                <p>
-                    Hacer ejercicio con regularidad mejora tu energía, tu estado de ánimo y
-                    reduce el riesgo de enfermedades cardiovasculares. Con solo 30 minutos
-                    al día ya se notan los beneficios.
-                </p>
-            </article>
-            <article>
-                <h3>Cómo empezar tu rutina</h3>
-                <p>
-                    Si eres principiante, lo ideal es comenzar con sesiones cortas de baja
-                    intensidad e ir aumentando la exigencia poco a poco cada semana.
-                </p>
-            </article>
-            <article>
-                <h3>Nutrición y entrenamiento</h3>
-                <p>
-                    La alimentación es tan importante como el entrenamiento. Acompaña tu
-                    rutina con una dieta balanceada, rica en proteína, frutas y verduras.
-                </p>
-            </article>
-        </section>
-        <section class="calculadora-imc" id="about">
-            <h2>Calculadora de IMC</h2>
-            <p>Descubre tu Índice de Masa Corporal (IMC) ingresando tus datos a continuación.</p>
-            <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 450px; margin-top: 1rem;">
-                <label for="peso">Peso (kg):</label>
-                <input type="number" id="peso" placeholder="Ej. 70">
 
-                <label for="altura">Altura (m):</label>
-                <input type="number" id="altura" placeholder="Ej. 1.75" step="0.01">
+        <div class="franja">
+            <div class="contenedor franja-inner">
+                <span>3 niveles de rutina</span>
+                <span>En casa o en el gimnasio</span>
+                <span>Tu progreso en cualquier dispositivo</span>
+            </div>
+        </div>
 
-                <button id="btn-calcular" type="button">Calcular</button>
+        <section class="seccion" id="about">
+            <div class="contenedor dos-columnas">
+                <div>
+                    <h2 class="titulo-seccion">¿Qué es FITPLAN?</h2>
+                    <p class="texto-suave">
+                        Somos una plataforma pensada para personas que quieren empezar a ejercitarse
+                        de forma segura y organizada. Ofrecemos rutinas clasificadas por nivel,
+                        explicadas de manera clara para que cualquier persona pueda seguirlas sin
+                        necesidad de un entrenador presencial.
+                    </p>
+                </div>
+                <aside class="nota">
+                    <h3>Dato importante</h3>
+                    <p>
+                        Antes de empezar cualquier rutina, recuerda calentar al menos 5 minutos
+                        y mantenerte hidratado durante todo el entrenamiento.
+                    </p>
+                </aside>
             </div>
             <p id="resultado-imc" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
             <div id="rutinas-recomendadas"></div>
