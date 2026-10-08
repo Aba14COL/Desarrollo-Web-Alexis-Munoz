@@ -82,134 +82,19 @@
                     </p>
                 </aside>
             </div>
+            <p id="resultado-imc" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
+            <div id="rutinas-recomendadas"></div>
         </section>
 
-        <section class="seccion" id="featured">
-            <div class="contenedor">
-                <h2 class="titulo-seccion">Artículos destacados</h2>
-                <div class="destacados">
-                    <article>
-                        <h3>Beneficios del ejercicio diario</h3>
-                        <p>
-                            Hacer ejercicio con regularidad mejora tu energía, tu estado de ánimo y
-                            reduce el riesgo de enfermedades cardiovasculares. Con solo 30 minutos
-                            al día ya se notan los beneficios.
-                        </p>
-                    </article>
-                    <article>
-                        <h3>Cómo empezar tu rutina</h3>
-                        <p>
-                            Si eres principiante, lo ideal es comenzar con sesiones cortas de baja
-                            intensidad e ir aumentando la exigencia poco a poco cada semana.
-                        </p>
-                    </article>
-                    <article>
-                        <h3>Nutrición y entrenamiento</h3>
-                        <p>
-                            La alimentación es tan importante como el entrenamiento. Acompaña tu
-                            rutina con una dieta balanceada, rica en proteína, frutas y verduras.
-                        </p>
-                    </article>
-                </div>
-            </div>
-        </section>
+        <footer>
+            <p>2026 FITPLAN. Todos los derechos reservados.</p>
+        </footer>
 
-        <section class="seccion" id="calculadora">
-            <div class="contenedor imc-grid">
-                <div>
-                    <h2 class="titulo-seccion">Calculadora de IMC</h2>
-                    <p class="texto-suave">
-                        Descubre tu Índice de Masa Corporal (IMC) ingresando tus datos a continuación.
-                    </p>
-                    <p class="texto-suave" data-solo-visitante>
-                        Si inicias sesión, guardamos cada cálculo en tu perfil.
-                    </p>
-                </div>
-                <div class="panel">
-                    <form id="imc-form" class="formulario" novalidate>
-                        <div class="campo">
-                            <label for="peso">Peso (kg)</label>
-                            <input type="number" id="peso" placeholder="Ej. 70" step="0.1" min="1" inputmode="decimal">
-                        </div>
-                        <div class="campo">
-                            <label for="altura">Altura (m)</label>
-                            <input type="number" id="altura" placeholder="Ej. 1.75" step="0.01" min="0.5" inputmode="decimal">
-                        </div>
-                        <button class="btn btn-primario btn-bloque" id="btn-calcular" type="submit">Calcular</button>
-                    </form>
-                    <p id="resultado-imc" class="mensaje" role="status"></p>
-                    <p id="nota-imc" class="mensaje suave" role="status"></p>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="contenedor">
-            <p>&copy; 2026 FITPLAN. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+    <script type="module" src="./app.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
-    <script type="module" src="sesion.js"></script>
-    <script type="module">
-        const form = document.getElementById('imc-form')
-        const resultado = document.getElementById('resultado-imc')
-        const nota = document.getElementById('nota-imc')
 
-        function mostrar(elemento, texto, tipo) {
-            elemento.textContent = texto
-            elemento.className = 'mensaje ' + tipo
-        }
-
-        // Guardar es un extra: si no hay sesión o falla, la calculadora igual funciona
-        async function guardar(peso, altura, imc) {
-            try {
-                const { cliente } = await import('./auth.js')
-                const { data: { session } } = await cliente.auth.getSession()
-                if (!session) {
-                    mostrar(nota, 'Inicia sesión para guardar tu historial de IMC.', 'suave')
-                    return
-                }
-                const { error } = await cliente.from('Imc').insert({ peso: peso, altura: altura })
-                if (error) throw error
-                const { error: errorPerfil } = await cliente.from('Usuario').update({ IMC: imc }).eq('id', session.user.id)
-                if (errorPerfil) throw errorPerfil
-                mostrar(nota, 'Guardado en tu perfil.', 'ok')
-            } catch (error) {
-                console.error('No se guardó el IMC:', error.message)
-                mostrar(nota, 'No se pudo guardar tu IMC. Intenta de nuevo.', 'error')
-            }
-        }
-
-        form.addEventListener('submit', function (e) {
-            e.preventDefault()
-            nota.textContent = ''
-
-            const peso = parseFloat(document.getElementById('peso').value)
-            const altura = parseFloat(document.getElementById('altura').value)
-
-            if (!(peso > 0 && altura > 0)) {
-                mostrar(resultado, 'Por favor ingresa valores válidos para peso y altura.', 'error')
-                return
-            }
-
-            const imc = Number((peso / (altura * altura)).toFixed(2))
-            let categoria
-            if (imc < 18.5) {
-                categoria = 'Estás por debajo de tu peso ideal.'
-            } else if (imc < 25) {
-                categoria = 'Tienes un peso saludable.'
-            } else if (imc < 30) {
-                categoria = 'Tienes sobrepeso.'
-            } else {
-                categoria = 'Tienes obesidad.'
-            }
-
-            mostrar(resultado, 'Tu IMC es ' + imc.toFixed(2) + '. ' + categoria, 'ok')
-            guardar(peso, altura, imc)
-        })
-    </script>
 </body>
 
 </html>
