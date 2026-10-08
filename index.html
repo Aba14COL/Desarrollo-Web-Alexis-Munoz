@@ -6,125 +6,210 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FITPLAN - Tu plataforma de rutinas de ejercicio personalizadas.">
     <title>FITPLAN - Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <h1>FitPlan</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="rutinas.html">Rutinas</a></li>
-                <li><a href="login.html">Iniciar Sesión</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="contenedor header-inner">
+            <a class="logo" href="index.html" aria-label="FitPlan, inicio">Fit<span>Plan</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu"
+                aria-label="Abrir o cerrar el menú"><span></span></button>
+            <nav id="menu" aria-label="Principal">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Inicio</a></li>
+                    <li><a href="rutinas.html">Rutinas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <div id="zona-sesion" class="zona-sesion">
+                <a class="btn btn-borde btn-sm" href="login.html">Iniciar sesión</a>
+                <a class="btn btn-primario btn-sm" href="registro.html">Únete</a>
+            </div>
+        </div>
     </header>
+
     <main>
         <section class="hero">
-            <h2>Bienvenido a FITPLAN</h2>
-            <p>
-                FITPLAN es tu plataforma para entrenar en casa o en el gimnasio, sin importar
-                tu nivel. Elige una rutina, síguela paso a paso y lleva el control de tu
-                progreso desde cualquier dispositivo.
-            </p>
-        </section>
-        <section class="about" id="about">
-            <h2>¿Qué es FITPLAN?</h2>
-            <p>
-                Somos una plataforma pensada para personas que quieren empezar a ejercitarse
-                de forma segura y organizada. Ofrecemos rutinas clasificadas por nivel,
-                explicadas de manera clara para que cualquier persona pueda seguirlas sin
-                necesidad de un entrenador presencial.
-            </p>
-            <aside>
-                <h3>Dato importante</h3>
-                <p>
-                    Antes de empezar cualquier rutina, recuerda calentar al menos 5 minutos
-                    y mantenerte hidratado durante todo el entrenamiento.
-                </p>
-            </aside>
-        </section>
-        <section class="featured" id="featured">
-            <h2>Artículos Destacados</h2>
-            <article>
-                <h3>Beneficios del ejercicio diario</h3>
-                <p>
-                    Hacer ejercicio con regularidad mejora tu energía, tu estado de ánimo y
-                    reduce el riesgo de enfermedades cardiovasculares. Con solo 30 minutos
-                    al día ya se notan los beneficios.
-                </p>
-            </article>
-            <article>
-                <h3>Cómo empezar tu rutina</h3>
-                <p>
-                    Si eres principiante, lo ideal es comenzar con sesiones cortas de baja
-                    intensidad e ir aumentando la exigencia poco a poco cada semana.
-                </p>
-            </article>
-            <article>
-                <h3>Nutrición y entrenamiento</h3>
-                <p>
-                    La alimentación es tan importante como el entrenamiento. Acompaña tu
-                    rutina con una dieta balanceada, rica en proteína, frutas y verduras.
-                </p>
-            </article>
-        </section>
-        <section class="calculadora-imc" id="about">
-            <h2>Calculadora de IMC</h2>
-            <p>Descubre tu Índice de Masa Corporal (IMC) ingresando tus datos a continuación.</p>
-            <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 450px; margin-top: 1rem;">
-                <label for="peso">Peso (kg):</label>
-                <input type="number" id="peso" placeholder="Ej. 70">
-
-                <label for="altura">Altura (m):</label>
-                <input type="number" id="altura" placeholder="Ej. 1.75" step="0.01">
-
-                <button id="btn-calcular" type="button">Calcular</button>
+            <div class="contenedor hero-grid">
+                <div>
+                    <h1>Entrena a tu manera. Sin excusas.</h1>
+                    <p class="hero-texto">
+                        FITPLAN es tu plataforma para entrenar en casa o en el gimnasio, sin importar
+                        tu nivel. Elige una rutina, síguela paso a paso y lleva el control de tu
+                        progreso desde cualquier dispositivo.
+                    </p>
+                    <div class="hero-acciones">
+                        <a class="btn btn-primario" href="rutinas.html">Ver rutinas</a>
+                        <a class="btn btn-borde" href="registro.html" data-solo-visitante>Crear cuenta gratis</a>
+                    </div>
+                </div>
+                <aside class="panel-amarillo">
+                    <h2>Empieza por tu punto de partida</h2>
+                    <p>Calcula tu IMC en segundos y elige la rutina que mejor se ajusta a ti.</p>
+                    <a class="btn btn-negro" href="#calculadora">Calcular mi IMC</a>
+                </aside>
             </div>
-            <p id="resultado-imc" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
         </section>
 
-        <footer>
-            <p>2026 FITPLAN. Todos los derechos reservados.</p>
-        </footer>
+        <div class="franja">
+            <div class="contenedor franja-inner">
+                <span>3 niveles de rutina</span>
+                <span>En casa o en el gimnasio</span>
+                <span>Tu progreso en cualquier dispositivo</span>
+            </div>
+        </div>
 
-        <script>
+        <section class="seccion" id="about">
+            <div class="contenedor dos-columnas">
+                <div>
+                    <h2 class="titulo-seccion">¿Qué es FITPLAN?</h2>
+                    <p class="texto-suave">
+                        Somos una plataforma pensada para personas que quieren empezar a ejercitarse
+                        de forma segura y organizada. Ofrecemos rutinas clasificadas por nivel,
+                        explicadas de manera clara para que cualquier persona pueda seguirlas sin
+                        necesidad de un entrenador presencial.
+                    </p>
+                </div>
+                <aside class="nota">
+                    <h3>Dato importante</h3>
+                    <p>
+                        Antes de empezar cualquier rutina, recuerda calentar al menos 5 minutos
+                        y mantenerte hidratado durante todo el entrenamiento.
+                    </p>
+                </aside>
+            </div>
+        </section>
 
-            document.getElementById('btn-calcular').addEventListener('click', function () {
+        <section class="seccion" id="featured">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Artículos destacados</h2>
+                <div class="destacados">
+                    <article>
+                        <h3>Beneficios del ejercicio diario</h3>
+                        <p>
+                            Hacer ejercicio con regularidad mejora tu energía, tu estado de ánimo y
+                            reduce el riesgo de enfermedades cardiovasculares. Con solo 30 minutos
+                            al día ya se notan los beneficios.
+                        </p>
+                    </article>
+                    <article>
+                        <h3>Cómo empezar tu rutina</h3>
+                        <p>
+                            Si eres principiante, lo ideal es comenzar con sesiones cortas de baja
+                            intensidad e ir aumentando la exigencia poco a poco cada semana.
+                        </p>
+                    </article>
+                    <article>
+                        <h3>Nutrición y entrenamiento</h3>
+                        <p>
+                            La alimentación es tan importante como el entrenamiento. Acompaña tu
+                            rutina con una dieta balanceada, rica en proteína, frutas y verduras.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                let peso = parseFloat(document.getElementById('peso').value);
-                let altura = parseFloat(document.getElementById('altura').value);
-                let elementoResultado = document.getElementById('resultado-imc');
-
-
-                if (peso > 0 && altura > 0) {
-                    let imc = peso / (altura * altura);
-                    let mensaje = "Tu IMC es " + imc.toFixed(2) + ". ";
-
-                    if (imc < 18.5) {
-                        mensaje += "Estás por debajo de tu peso ideal.";
-                    } else if (imc >= 18.5 && imc < 24.9) {
-                        mensaje += "Tienes un peso saludable.";
-                    } else if (imc >= 25 && imc < 29.9) {
-                        mensaje += "Tienes sobrepeso.";
-                    } else {
-                        mensaje += "Tienes obesidad.";
-                    }
-
-
-                    elementoResultado.textContent = mensaje;
-                    elementoResultado.style.color = "var(--color-principal)";
-                } else {
-                    elementoResultado.textContent = "Por favor ingresa valores válidos para peso y altura.";
-                    elementoResultado.style.color = "var(--color-terciario)";
-                }
-            });
-        </script>
+        <section class="seccion" id="calculadora">
+            <div class="contenedor imc-grid">
+                <div>
+                    <h2 class="titulo-seccion">Calculadora de IMC</h2>
+                    <p class="texto-suave">
+                        Descubre tu Índice de Masa Corporal (IMC) ingresando tus datos a continuación.
+                    </p>
+                    <p class="texto-suave" data-solo-visitante>
+                        Si inicias sesión, guardamos cada cálculo en tu perfil.
+                    </p>
+                </div>
+                <div class="panel">
+                    <form id="imc-form" class="formulario" novalidate>
+                        <div class="campo">
+                            <label for="peso">Peso (kg)</label>
+                            <input type="number" id="peso" placeholder="Ej. 70" step="0.1" min="1" inputmode="decimal">
+                        </div>
+                        <div class="campo">
+                            <label for="altura">Altura (m)</label>
+                            <input type="number" id="altura" placeholder="Ej. 1.75" step="0.01" min="0.5" inputmode="decimal">
+                        </div>
+                        <button class="btn btn-primario btn-bloque" id="btn-calcular" type="submit">Calcular</button>
+                    </form>
+                    <p id="resultado-imc" class="mensaje" role="status"></p>
+                    <p id="nota-imc" class="mensaje suave" role="status"></p>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <footer class="site-footer">
+        <div class="contenedor">
+            <p>&copy; 2026 FITPLAN. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"></script>
+    <script type="module" src="sesion.js"></script>
+    <script type="module">
+        const form = document.getElementById('imc-form')
+        const resultado = document.getElementById('resultado-imc')
+        const nota = document.getElementById('nota-imc')
+
+        function mostrar(elemento, texto, tipo) {
+            elemento.textContent = texto
+            elemento.className = 'mensaje ' + tipo
+        }
+
+        // Guardar es un extra: si no hay sesión o falla, la calculadora igual funciona
+        async function guardar(peso, altura, imc) {
+            try {
+                const { cliente } = await import('./auth.js')
+                const { data: { session } } = await cliente.auth.getSession()
+                if (!session) {
+                    mostrar(nota, 'Inicia sesión para guardar tu historial de IMC.', 'suave')
+                    return
+                }
+                const { error } = await cliente.from('Imc').insert({ peso: peso, altura: altura })
+                if (error) throw error
+                const { error: errorPerfil } = await cliente.from('Usuario').update({ IMC: imc }).eq('id', session.user.id)
+                if (errorPerfil) throw errorPerfil
+                mostrar(nota, 'Guardado en tu perfil.', 'ok')
+            } catch (error) {
+                console.error('No se guardó el IMC:', error.message)
+                mostrar(nota, 'No se pudo guardar tu IMC. Intenta de nuevo.', 'error')
+            }
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+            nota.textContent = ''
+
+            const peso = parseFloat(document.getElementById('peso').value)
+            const altura = parseFloat(document.getElementById('altura').value)
+
+            if (!(peso > 0 && altura > 0)) {
+                mostrar(resultado, 'Por favor ingresa valores válidos para peso y altura.', 'error')
+                return
+            }
+
+            const imc = Number((peso / (altura * altura)).toFixed(2))
+            let categoria
+            if (imc < 18.5) {
+                categoria = 'Estás por debajo de tu peso ideal.'
+            } else if (imc < 25) {
+                categoria = 'Tienes un peso saludable.'
+            } else if (imc < 30) {
+                categoria = 'Tienes sobrepeso.'
+            } else {
+                categoria = 'Tienes obesidad.'
+            }
+
+            mostrar(resultado, 'Tu IMC es ' + imc.toFixed(2) + '. ' + categoria, 'ok')
+            guardar(peso, altura, imc)
+        })
+    </script>
 </body>
 
 </html>
