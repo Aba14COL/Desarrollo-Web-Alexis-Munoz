@@ -83,8 +83,35 @@
                     </p>
                 </aside>
             </div>
-            <p id="resultado-imc" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
-            <div id="rutinas-recomendadas"></div>
+        </section>
+
+        <section class="seccion" id="calculadora">
+            <div class="contenedor">
+                <h2 class="titulo-seccion">Calcula tu IMC</h2>
+                <p class="texto-suave" style="max-width: 60ch; margin-bottom: 2rem;">
+                    Ingresa tu peso y altura para conocer tu Índice de Masa Corporal y recibir
+                    rutinas personalizadas según tu condición física actual.
+                </p>
+                <div class="imc-centrado">
+                    <div class="panel">
+                        <form class="formulario" onsubmit="return false;">
+                            <div class="campo">
+                                <label for="peso">Peso (kg)</label>
+                                <input type="number" id="peso" placeholder="Ej: 70" min="1" max="500" step="0.1">
+                            </div>
+                            <div class="campo">
+                                <label for="altura">Altura (m)</label>
+                                <input type="number" id="altura" placeholder="Ej: 1.75" min="0.5" max="2.5" step="0.01">
+                            </div>
+                            <button type="button" id="btn-calcular" class="btn btn-primario btn-bloque">
+                                Calcular mi IMC
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <p id="resultado-imc" style="font-weight: bold; font-size: 1.15rem; min-height: 1.6em; text-align: center; margin-top: 1.5rem;"></p>
+                <div id="rutinas-recomendadas"></div>
+            </div>
         </section>
 
         <footer>

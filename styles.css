@@ -420,6 +420,11 @@ h3 {
     align-items: start;
 }
 
+.imc-centrado {
+    max-width: 480px;
+    margin-inline: auto;
+}
+
 .formulario {
     display: flex;
     flex-direction: column;

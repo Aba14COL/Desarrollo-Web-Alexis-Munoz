@@ -73,6 +73,7 @@ export function esErrorDeRed(error) {
  * Obtiene la lista de registros del usuario autenticado ordenados por fecha descendente.
  */
 export async function listarRegistros() {
+    await new Promise(r => setTimeout(r, 8000)); // TEMPORAL
     const headers = await obtenerHeaders(false);
     const url = `${ENDPOINT}?order=fecha.desc,creado_en.desc`;
     const datos = await ejecutarFetch(url, {
