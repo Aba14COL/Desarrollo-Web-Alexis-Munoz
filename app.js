@@ -49,11 +49,11 @@ btnCalcular.addEventListener('click', function () {
   // Mostrar resultado del IMC
   let mensajeIMC = "Tu IMC es " + imc.toFixed(2) + ". ";
 
-  if (imc < 18.5) {
+  if (categoria === "bajo_peso") {
     mensajeIMC += "Estás por debajo de tu peso ideal.";
-  } else if (imc >= 18.5 && imc < 24.9) {
+  } else if (categoria === "normal") {
     mensajeIMC += "Tienes un peso saludable.";
-  } else if (imc >= 25 && imc < 29.9) {
+  } else if (categoria === "sobrepeso") {
     mensajeIMC += "Tienes sobrepeso.";
   } else {
     mensajeIMC += "Tienes obesidad.";

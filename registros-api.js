@@ -73,17 +73,13 @@ export function esErrorDeRed(error) {
  * Obtiene la lista de registros del usuario autenticado ordenados por fecha descendente.
  */
 export async function listarRegistros() {
-    try {
-        const headers = await obtenerHeaders(false);
-        const url = `${ENDPOINT}?order=fecha.desc,creado_en.desc`;
-        const datos = await ejecutarFetch(url, {
-            method: 'GET',
-            headers
-        });
-        return Array.isArray(datos) ? datos : [];
-    } catch (error) {
-        throw error;
-    }
+    const headers = await obtenerHeaders(false);
+    const url = `${ENDPOINT}?order=fecha.desc,creado_en.desc`;
+    const datos = await ejecutarFetch(url, {
+        method: 'GET',
+        headers
+    });
+    return Array.isArray(datos) ? datos : [];
 }
 
 /**
@@ -91,22 +87,18 @@ export async function listarRegistros() {
  * Verifica que Supabase devuelva exactamente una fila creada.
  */
 export async function crearRegistro(datos) {
-    try {
-        const headers = await obtenerHeaders(true);
-        const respuesta = await ejecutarFetch(ENDPOINT, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(datos)
-        });
+    const headers = await obtenerHeaders(true);
+    const respuesta = await ejecutarFetch(ENDPOINT, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(datos)
+    });
 
-        if (!Array.isArray(respuesta) || respuesta.length !== 1) {
-            throw new Error('No se pudo verificar la creación del registro');
-        }
-
-        return respuesta[0];
-    } catch (error) {
-        throw error;
+    if (!Array.isArray(respuesta) || respuesta.length !== 1) {
+        throw new Error('No se pudo verificar la creación del registro');
     }
+
+    return respuesta[0];
 }
 
 /**
@@ -114,31 +106,27 @@ export async function crearRegistro(datos) {
  * Si no encuentra la fila, lanza error específico y nunca crea registros nuevos.
  */
 export async function editarRegistro(id, cambios) {
-    try {
-        if (!id) {
-            throw new Error('Se requiere el id del registro para editar');
-        }
-
-        const headers = await obtenerHeaders(true);
-        const url = `${ENDPOINT}?id=eq.${encodeURIComponent(id)}`;
-        const respuesta = await ejecutarFetch(url, {
-            method: 'PATCH',
-            headers,
-            body: JSON.stringify(cambios)
-        });
-
-        if (!Array.isArray(respuesta) || respuesta.length === 0) {
-            throw new Error('no se encontró el registro');
-        }
-
-        if (respuesta.length !== 1) {
-            throw new Error('Se actualizó un número inesperado de registros');
-        }
-
-        return respuesta[0];
-    } catch (error) {
-        throw error;
+    if (!id) {
+        throw new Error('Se requiere el id del registro para editar');
     }
+
+    const headers = await obtenerHeaders(true);
+    const url = `${ENDPOINT}?id=eq.${encodeURIComponent(id)}`;
+    const respuesta = await ejecutarFetch(url, {
+        method: 'PATCH',
+        headers,
+        body: JSON.stringify(cambios)
+    });
+
+    if (!Array.isArray(respuesta) || respuesta.length === 0) {
+        throw new Error('no se encontró el registro');
+    }
+
+    if (respuesta.length !== 1) {
+        throw new Error('Se actualizó un número inesperado de registros');
+    }
+
+    return respuesta[0];
 }
 
 /**
@@ -146,24 +134,20 @@ export async function editarRegistro(id, cambios) {
  * Confirma que afectó exactamente 1 fila antes de finalizar.
  */
 export async function eliminarRegistro(id) {
-    try {
-        if (!id) {
-            throw new Error('Se requiere el id del registro para eliminar');
-        }
-
-        const headers = await obtenerHeaders(true);
-        const url = `${ENDPOINT}?id=eq.${encodeURIComponent(id)}`;
-        const respuesta = await ejecutarFetch(url, {
-            method: 'DELETE',
-            headers
-        });
-
-        if (!Array.isArray(respuesta) || respuesta.length !== 1) {
-            throw new Error('No se pudo eliminar el registro o ya no existe');
-        }
-
-        return respuesta[0];
-    } catch (error) {
-        throw error;
+    if (!id) {
+        throw new Error('Se requiere el id del registro para eliminar');
     }
+
+    const headers = await obtenerHeaders(true);
+    const url = `${ENDPOINT}?id=eq.${encodeURIComponent(id)}`;
+    const respuesta = await ejecutarFetch(url, {
+        method: 'DELETE',
+        headers
+    });
+
+    if (!Array.isArray(respuesta) || respuesta.length !== 1) {
+        throw new Error('No se pudo eliminar el registro o ya no existe');
+    }
+
+    return respuesta[0];
 }
