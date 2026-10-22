@@ -853,3 +853,65 @@ footer p {
         transform: translateY(0);
     }
 }
+
+/* ---------- Progreso: registros y estados ---------- */
+.tarjeta-registro {
+    background: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-left: 4px solid var(--color-principal);
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tarjeta-registro-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tarjeta-registro h3 {
+    font-size: 1.2rem;
+    color: var(--color-principal);
+}
+
+.registro-fecha {
+    font-size: 0.9rem;
+    color: var(--color-texto-suave);
+}
+
+.registro-meta {
+    font-size: 0.95rem;
+    color: var(--color-texto);
+}
+
+.registro-nota {
+    font-size: 0.95rem;
+    color: var(--color-texto-suave);
+    font-style: italic;
+    background: #0d0d0d;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    border-left: 2px solid var(--color-borde);
+}
+
+.registro-acciones {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.estado-mensaje {
+    padding: 1.5rem;
+    text-align: center;
+    background: var(--color-superficie);
+    border: 1px dashed var(--color-borde);
+    border-radius: 6px;
+    color: var(--color-texto-suave);
+}
+
