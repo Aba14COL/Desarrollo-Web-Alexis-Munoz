@@ -105,9 +105,9 @@ export const rutinas = [
 export function obtenerCategoriaIMC(imc) {
   if (imc < 18.5) {
     return "bajo_peso";
-  } else if (imc >= 18.5 && imc < 24.9) {
+  } else if (imc < 25) {
     return "normal";
-  } else if (imc >= 25 && imc < 29.9) {
+  } else if (imc < 30) {
     return "sobrepeso";
   } else {
     return "obesidad";

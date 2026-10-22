@@ -103,11 +103,18 @@ function alternarBloqueoInterfaz(bloquear) {
 }
 
 /**
+ * Retorna la fecha actual en formato local YYYY-MM-DD.
+ */
+function fechaHoy() {
+    return new Date().toLocaleDateString('en-CA');
+}
+
+/**
  * Limpia el formulario y regresa al modo creación sin guardar nada.
  */
 function limpiarFormulario() {
     formulario.reset();
-    inputFecha.value = new Date().toISOString().split('T')[0];
+    inputFecha.value = fechaHoy();
     idEnEdicion = null;
     btnGuardar.textContent = 'Guardar';
     btnCancelar.hidden = true;
@@ -296,7 +303,7 @@ function validarFormulario() {
  * Maneja el resultado incierto cuando una petición de red se corta o falla sin respuesta.
  * Consulta el estado actual del servidor para verificar si la acción realmente ocurrió.
  */
-async function verificarResultadoIncierto(accion, datosEsperados, idAfectado) {
+async function verificarResultadoIncierto(accion, datosEsperados, idAfectado, idsPrevios) {
     mostrarMensaje('No recibí confirmación. Voy a revisar el estado actual…', 'suave');
 
     try {
@@ -305,8 +312,10 @@ async function verificarResultadoIncierto(accion, datosEsperados, idAfectado) {
         aplicarFiltro();
 
         if (accion === 'crear') {
+            // Un registro con los mismos datos no identifica el envío por sí solo si ya existía antes
             const encontrado = registrosActuales.find(function (r) {
                 return (
+                    !idsPrevios.has(r.id) &&
                     Number(r.rutina_id) === Number(datosEsperados.rutina_id) &&
                     r.fecha === datosEsperados.fecha &&
                     Number(r.duracion_min) === Number(datosEsperados.duracion_min) &&
@@ -381,6 +390,7 @@ formulario.addEventListener('submit', async function (evento) {
 
     const esEdicion = Boolean(idEnEdicion);
     const idObjetivo = idEnEdicion;
+    const idsPrevios = new Set(todosLosRegistros.map(function (r) { return r.id; }));
     let filaConfirmada = null;
 
     try {
@@ -393,10 +403,16 @@ formulario.addEventListener('submit', async function (evento) {
         alternarBloqueoInterfaz(false);
 
         if (esErrorDeRed(error)) {
-            await verificarResultadoIncierto(esEdicion ? 'editar' : 'crear', payload, idObjetivo);
+            await verificarResultadoIncierto(esEdicion ? 'editar' : 'crear', payload, idObjetivo, idsPrevios);
         } else {
             // Error del servidor: conserva lo escrito y el id de edición
             mostrarMensaje(error.message, 'error');
+            if (esEdicion && error.message.includes('no se encontró el registro')) {
+                try {
+                    todosLosRegistros = await listarRegistros();
+                    aplicarFiltro();
+                } catch (_) {}
+            }
         }
         return;
     }
@@ -404,7 +420,7 @@ formulario.addEventListener('submit', async function (evento) {
     // Escritura confirmada con éxito por el servidor
     alternarBloqueoInterfaz(false);
     limpiarFormulario();
-    mostrarMensaje(esEdicion ? 'Guardado correctamente.' : 'Guardado correctamente.', 'ok');
+    mostrarMensaje('Guardado correctamente.', 'ok');
 
     // Consulta posterior separada
     try {
@@ -491,7 +507,7 @@ async function iniciar() {
     }
 
     poblarSelectRutinas();
-    inputFecha.value = new Date().toISOString().split('T')[0];
+    inputFecha.value = fechaHoy();
 
     inputBusqueda.addEventListener('input', aplicarFiltro);
 
